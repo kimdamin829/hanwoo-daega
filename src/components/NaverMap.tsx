@@ -1,9 +1,10 @@
 "use client";
 import { useEffect } from "react";
 
+// 전역 타입 선언 (window.naver가 있다는 걸 TS에 알려줌)
 declare global {
   interface Window {
-    naver: any; // 추후 타입 정의 가능
+    naver?: typeof naver;
   }
 }
 
@@ -14,26 +15,26 @@ export default function NaverMap() {
     script.async = true;
 
     script.onload = () => {
-      const { naver } = window;
-      if (!naver) return;
+      if (!window.naver) return;
 
-      // 좌표 확인 (위도, 경도 순서 다시 점검)
-      const position = new naver.maps.LatLng(34.966028881, 127.561955836);
+      // 좌표 확인 (위도, 경도)
+      const position = new window.naver.maps.LatLng(
+        34.966028881,
+        127.561955836
+      );
 
       // 지도 생성
-      const map = new naver.maps.Map("map", {
+      const map = new window.naver.maps.Map("map", {
         center: position,
         zoom: 16,
       });
 
-      // ✅ 마커 생성 (map 전달 명확하게)
-      const marker = new naver.maps.Marker({
+      // 마커 생성
+      new window.naver.maps.Marker({
         position,
-        map: map,
+        map,
         title: "한우대가 NO.9",
       });
-
-      console.log("Marker created:", marker);
     };
 
     document.head.appendChild(script);
