@@ -15,6 +15,7 @@ export default function Home() {
           alt="한우대가 매장 전경"
           className="absolute inset-0 w-full h-full object-cover"
         />
+
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 text-center text-white px-4">
           <h1 className="text-5xl font-extrabold tracking-widest">

@@ -39,7 +39,7 @@ export default function ReviewSection() {
             transition={{ duration: 0.6, delay: i * 0.2 }}
           >
             <div className="review-stars text-yellow-500 mb-3">★★★★★</div>
-            <p className="review-text mb-4 text-gray-700">"{review.text}"</p>
+            <p className="review-text mb-4 text-gray-700">{review.text}</p>
             <p className="review-author font-semibold">{review.author}</p>
           </motion.div>
         ))}
