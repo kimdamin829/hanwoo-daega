@@ -1,10 +1,10 @@
 "use client";
 import { useEffect } from "react";
 
-// 전역 타입 선언 (window.naver가 있다는 걸 TS에 알려줌)
+// 전역 타입 선언 (naver는 어떤 타입인지 모르니까 그냥 any로 둠)
 declare global {
   interface Window {
-    naver?: typeof naver;
+    naver?: any;
   }
 }
 
