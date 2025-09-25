@@ -1,6 +1,12 @@
 "use client";
 import { useEffect } from "react";
 
+declare global {
+  interface Window {
+    naver: any; // 추후 타입 정의 가능
+  }
+}
+
 export default function NaverMap() {
   useEffect(() => {
     const script = document.createElement("script");
@@ -8,7 +14,7 @@ export default function NaverMap() {
     script.async = true;
 
     script.onload = () => {
-      const { naver } = window as any;
+      const { naver } = window;
       if (!naver) return;
 
       // 좌표 확인 (위도, 경도 순서 다시 점검)
